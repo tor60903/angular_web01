@@ -1,0 +1,107 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="text-center">
+                    <h3>Criar Conta de Acesso</h3>
+                    <p>Preencha o formulário abaixo:</p>
+                </div>
+ 
+                <hr />
+ 
+                <form [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+ 
+                    <div class="mb-2">
+                        <label>Nome do usuário:</label>
+                        <input type="text" class="form-control" formControlName="nome" />
+                        <div class="text-danger">
+                            <div *ngIf="form.nome.touched && form.nome.invalid">
+                                <div *ngIf="form.nome.errors.required">
+                                    Por favor, informe seu nome.
+                                </div>
+                                <div *ngIf="form.nome.errors.minlength">
+                                    Por favor, informe pelo menos 6 caracteres.
+                                </div>
+                                <div *ngIf="form.nome.errors.maxlength">
+                                    Por favor, informe no máximo 150 caracteres.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" formControlName="email" />
+                        <div class="text-danger">
+                            <div *ngIf="form.email.touched && form.email.invalid">
+                                <div *ngIf="form.email.errors.required">
+                                    Por favor, informe seu email.
+                                </div>
+                                <div *ngIf="form.email.errors.email">
+                                    Por favor, informe um endereço de email válido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control" formControlName="senha" />
+                        <div class="text-danger">
+                            <div *ngIf="form.senha.touched && form.senha.invalid">
+                                <div *ngIf="form.senha.errors.required">
+                                    Por favor, informe sua senha.
+                                </div>
+                                <div *ngIf="form.senha.errors.minlength">
+                                    Por favor, informe pelo menos 8 caracteres.
+                                </div>
+                                <div *ngIf="form.senha.errors.maxlength">
+                                    Por favor, informe no máximo 20 caracteres.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label>Confirme sua senha:</label>
+                        <input type="password" class="form-control" formControlName="senhaConfirmacao" />
+                        <div class="text-danger">
+                            <div *ngIf="form.senhaConfirmacao.touched && form.senhaConfirmacao.invalid">
+                                <div *ngIf="form.senhaConfirmacao.errors.required">
+                                    Por favor, informe sua senha.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-grid">
+                            <input type="submit" class="btn btn-primary"
+                                [disabled]="!formRegister.valid"
+                                value="Realizar Cadastro" />
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-grid">
+                            <a [routerLink]="['/acessar-conta']" class="btn btn-light">
+                                Já possui conta? <strong>Acesse aqui!</strong>
+                            </a>
+                        </div>
+                    </div>
+ 
+                </form>
+ 
+                <div class="mb-2 text-center">
+                    <strong class="text-success">
+                        {{mensagem_sucesso}}
+                    </strong>
+                    <strong class="text-danger">
+                        {{mensagem_erro}}
+                    </strong>
+                </div>
+ 
+            </div>
+        </div>
+        <div class="mt-2 text-center">
+            <small>COTI Informática - Java WebDeveloper</small>
+        </div>
+    </div>
+</div>
+ 
+

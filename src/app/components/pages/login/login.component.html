@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card mt-5">
+            <div class="card-body">
+                <div class="text-center">
+                    <img src="https://www.cotiinformatica.com.br/imagens/logo-coti-informatica.png" />
+                    <h4>Acessar Conta</h4>
+                </div>
+                <hr />
+ 
+                <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+ 
+                    <div class="mb-2">
+                        <label>Email de acesso:</label>
+                        <input type="text" class="form-control" formControlName="email" />
+                        <div class="text-danger">
+                            <div *ngIf="form.email.touched && form.email.invalid">
+                                <div *ngIf="form.email.errors.required">
+                                    Por favor, informe o seu email de acesso.
+                                </div>
+                                <div *ngIf="form.email.errors.email">
+                                    Por favor, informe um endereço de email válido.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label>Senha de acesso:</label>
+                        <input type="password" class="form-control" formControlName="senha" />
+                        <div class="text-danger">
+                            <div *ngIf="form.senha.touched && form.senha.invalid">
+                                <div *ngIf="form.senha.errors.required">
+                                    Por favor, informe sua senha de acesso.
+                                </div>
+                                <div *ngIf="form.senha.errors.minlength">
+                                    Por favor, informe pelo menos 8 caracteres.
+                                </div>
+                                <div *ngIf="form.senha.errors.maxlength">
+                                    Por favor, informe no máximo 20 caracteres.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <a [routerLink]="['/recuperar-senha']">
+                                Esqueci minha senha?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-grid">
+                            <input type="submit" class="btn btn-primary"
+                               [disabled]="!formLogin.valid" value="Acessar Sistema" />
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="d-grid">
+                            <a [routerLink]="['/criar-conta']" class="btn btn-light">
+                                Não possui conta? <strong>Cadastre-se aqui!</strong>
+                            </a>
+                        </div>
+                    </div>
+ 
+                </form>
+ 
+                <div class="text-center mb-2">
+                    <strong class="text-success">
+                        {{mensagem_sucesso}}
+                    </strong>
+                    <strong class="text-danger">
+                        {{mensagem_erro}}
+                    </strong>
+                </div>
+ 
+            </div>
+        </div>
+        <div class="mt-2 text-center">
+            <small>COTI Informática - Java WebDeveloper</small>
+        </div>
+    </div>
+</div>
+ 
+
